@@ -1,7 +1,8 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.0
-import QtQml.StateMachine 1.0 as DSM
+import QtQuick.Layouts 1.1
+
+import FontAwesome 1.0
 
 ApplicationWindow {
     id: mainWindow
@@ -12,37 +13,66 @@ ApplicationWindow {
 
     signal connect()
     signal selectTile()
+    signal openTools()
+    signal openToolSettings()
+    signal openColors()
+    signal openPreview()
+
+    BSStates { }
 
     Loader {
         id: mainContent
         anchors.fill: parent
     }
 
-    DSM.StateMachine {
-        initialState: connectState
-        running: true
+    BSToolBox {
+        id: toolbox
+        visible: false
+        anchors.fill: parent
+    }
 
-        DSM.State {
-            id: connectState
-            onEntered: mainContent.source = "Connect.qml"
-            DSM.SignalTransition {
-                targetState: tileSelState
-                signal: mainWindow.connect
+    BSToolSettings {
+        id: toolSettings
+        visible: false
+        anchors.fill: parent
+    }
+
+    BSPalette {
+        id: palette
+        visible: false
+        anchors.fill: parent
+    }
+
+    footer: ToolBar {
+        RowLayout {
+            anchors.fill: parent
+            BSToolButton {
+                id: toolsButton
+                Layout.fillWidth: true
+                text: FontAwesome.archive
+                onClicked: mainWindow.openTools()
             }
-        }
 
-        DSM.State {
-            id: tileSelState
-            onEntered: mainContent.source = "SelectTile.qml"
-            DSM.SignalTransition {
-                targetState: drawState
-                signal: mainWindow.selectTile
+            BSToolButton {
+                id: toolSettingsButton
+                Layout.fillWidth: true
+                text: FontAwesome.pencil
+                onClicked: mainWindow.openToolSettings()
             }
-        }
 
-        DSM.State {
-            id: drawState
-            onEntered: mainContent.source = "Draw.qml"
+            BSToolButton {
+                id: colorsButton
+                Layout.fillWidth: true
+                text: FontAwesome.eraser
+                onClicked: mainWindow.openColors()
+            }
+
+            BSToolButton {
+                id: previewButton
+                Layout.fillWidth: true
+                text: FontAwesome.eye
+                onClicked: mainWindow.openPreview()
+            }
         }
     }
 }

@@ -4,5 +4,11 @@
         <file>Connect.qml</file>
         <file>SelectTile.qml</file>
         <file>Draw.qml</file>
+        <file>BSToolButton.qml</file>
+        <file>BSStates.qml</file>
+        <file>BSToolBox.qml</file>
+        <file>BSToolSettings.qml</file>
+        <file>BSPalette.qml</file>
+        <file>BSToolBoxButton.qml</file>
     </qresource>
 </RCC>

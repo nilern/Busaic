@@ -1,0 +1,22 @@
+{
+  "name": "com.deepbeginnings.Busaic",
+  "description": "",
+  "author": {
+    "name": "Pauli Jaakkola",
+    "email": "pauli.jaakkola@iki.fi"
+  },
+  "repository": {
+    "type": "GITHUB",
+    "url": ""
+  },
+  "version": {
+    "label": "0.0.1",
+    "revision": "",
+    "fingerprint": ""
+  },
+  "dependencies": [
+    "font.awesome.pri@1.0.0"
+  ],
+  "pri_filename": "com_deepbeginnings_Busaic.pri",
+  "webpage": ""
+}
