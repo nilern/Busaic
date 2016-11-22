@@ -15,7 +15,10 @@ DSM.StateMachine {
 
     DSM.State {
         id: tileSelState
-        onEntered: mainContent.source = "SelectTile.qml"
+        onEntered: {
+            mainContent.source = "BSTiles.qml"
+            mainWindow.setSelectionFooter();
+        }
 
         DSM.SignalTransition {
             targetState: interactionState
@@ -27,10 +30,13 @@ DSM.StateMachine {
         id: interactionState
         initialState: drawState
         onEntered: {
-            mainContent.source = "Draw.qml";
+            mainWindow.editing = true;
             mainWindow.setInteractionFooter();
         }
-        onExited: mainWindow.removeFooter()
+        onExited: {
+            mainWindow.editing = false;
+            mainWindow.removeFooter();
+        }
 
         DSM.State {
             id: drawState
@@ -187,5 +193,6 @@ DSM.StateMachine {
 
     DSM.FinalState {
         id: doneState
+        onEntered: mainContent.source = "BSDone.qml"
     }
 }

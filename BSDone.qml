@@ -12,10 +12,9 @@ Item {
            text: qsTr("Busaic\nBus 23")
        }
 
-       Button {
+       Label {
            Layout.alignment: Qt.AlignHCenter
-           text: qsTr("Start")
-           onClicked: mainWindow.connect()
+           text: qsTr("Done for this ride.")
        }
    }
 }

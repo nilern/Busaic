@@ -9,17 +9,32 @@ ApplicationWindow {
     visible: true
     width: 640
     height: 480
-    title: qsTr("UIDMosaic")
+    title: qsTr("Busaic")
+
+    property Item activeTile
+    property int activeTileIndex: -1
+    property bool editing: false
 
     signal connect()
-    signal selectTile()
+    signal selectTile(Item tile)
     signal openTools()
     signal openToolSettings()
     signal openColors()
     signal openPreview()
 
+    onSelectTile: {
+        activeTile = tile;
+        activeTileIndex = mainContent.item.getActiveTileIndex();
+    }
+
     function setInteractionFooter() {
         footerLoader.source = "BSDrawFooter.qml";
+        footerLoader.visible = true;
+        this.footer = footerLoader;
+    }
+
+    function setSelectionFooter() {
+        footerLoader.source = "BSSelectionFooter.qml";
         footerLoader.visible = true;
         this.footer = footerLoader;
     }
