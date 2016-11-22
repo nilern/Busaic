@@ -26,7 +26,11 @@ DSM.StateMachine {
     DSM.State {
         id: interactionState
         initialState: drawState
-        onEntered: mainContent.source = "Draw.qml"
+        onEntered: {
+            mainContent.source = "Draw.qml";
+            mainWindow.setInteractionFooter();
+        }
+        onExited: mainWindow.removeFooter()
 
         DSM.State {
             id: drawState
@@ -55,12 +59,12 @@ DSM.StateMachine {
         DSM.State {
             id: toolsState
             onEntered: {
-                toolsButton.checked = true;
                 toolbox.visible = true;
+                onEntered: mainWindow.footer.item.toggleButton("tools");
             }
             onExited: {
-                toolsButton.checked = false;
                 toolbox.visible = false;
+                onEntered: mainWindow.footer.item.toggleButton(undefined);
             }
 
             DSM.SignalTransition {
@@ -87,12 +91,12 @@ DSM.StateMachine {
         DSM.State {
             id: toolSettingsState
             onEntered: {
-                toolSettingsButton.checked = true;
                 toolSettings.visible = true;
+                onEntered: mainWindow.footer.item.toggleButton("toolSettings");
             }
             onExited: {
-                toolSettingsButton.checked = false;
                 toolSettings.visible = false;
+                onEntered: mainWindow.footer.item.toggleButton(undefined);
             }
 
             DSM.SignalTransition {
@@ -119,12 +123,12 @@ DSM.StateMachine {
         DSM.State {
             id: colorsState
             onEntered: {
-                colorsButton.checked = true;
                 palette.visible = true;
+                onEntered: mainWindow.footer.item.toggleButton("colors");
             }
             onExited: {
-                colorsButton.checked = false;
                 palette.visible = false;
+                onEntered: mainWindow.footer.item.toggleButton(undefined);
             }
 
             DSM.SignalTransition {
@@ -147,9 +151,41 @@ DSM.StateMachine {
                 signal: mainWindow.openPreview
             }
         }
+    }
 
-        DSM.State {
-            id: previewState
+    DSM.State {
+        id: previewState
+        onEntered: mainWindow.showFAB()
+        onExited: mainWindow.hideFAB()
+
+        DSM.SignalTransition {
+            targetState: acceptState
+            signal: acceptFAB.clicked
         }
+    }
+
+    DSM.State {
+        id: acceptState
+        onEntered: acceptPopup.open()
+        onExited: acceptPopup.close()
+
+        DSM.SignalTransition {
+            targetState: doneState
+            signal: submitButton.clicked
+        }
+
+        DSM.SignalTransition {
+            targetState: drawState
+            signal: continueButton.clicked
+        }
+
+        DSM.SignalTransition {
+            targetState: connectState
+            signal: discardButton.clicked
+        }
+    }
+
+    DSM.FinalState {
+        id: doneState
     }
 }

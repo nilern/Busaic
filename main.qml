@@ -18,6 +18,25 @@ ApplicationWindow {
     signal openColors()
     signal openPreview()
 
+    function setInteractionFooter() {
+        footerLoader.source = "BSDrawFooter.qml";
+        footerLoader.visible = true;
+        this.footer = footerLoader;
+    }
+
+    function removeFooter() {
+        footerLoader.visible = false;
+        this.footer = null;
+    }
+
+    function showFAB() {
+        acceptFAB.visible = true;
+    }
+
+    function hideFAB() {
+        acceptFAB.visible = false;
+    }
+
     BSStates { }
 
     Loader {
@@ -43,36 +62,48 @@ ApplicationWindow {
         anchors.fill: parent
     }
 
-    footer: ToolBar {
-        RowLayout {
-            anchors.fill: parent
-            BSToolButton {
-                id: toolsButton
+    FloatingActionButton {
+        id: acceptFAB
+        visible: false
+        anchors {
+            bottom: parent.bottom
+            right: parent.right
+            margins: 8
+        }
+        font.family: FontAwesome.fontFamily
+        text: FontAwesome.check
+    }
+
+    Popup {
+        id: acceptPopup
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+        modal: true
+        closePolicy: Popup.NoAutoClose
+
+        ColumnLayout {
+            Button {
+                id: submitButton
                 Layout.fillWidth: true
-                text: FontAwesome.archive
-                onClicked: mainWindow.openTools()
+                text: qsTr("Submit")
             }
 
-            BSToolButton {
-                id: toolSettingsButton
+            Button {
+                id: continueButton
                 Layout.fillWidth: true
-                text: FontAwesome.pencil
-                onClicked: mainWindow.openToolSettings()
+                text: qsTr("Continue Editing")
             }
 
-            BSToolButton {
-                id: colorsButton
+            Button {
+                id: discardButton
                 Layout.fillWidth: true
-                text: FontAwesome.eraser
-                onClicked: mainWindow.openColors()
-            }
-
-            BSToolButton {
-                id: previewButton
-                Layout.fillWidth: true
-                text: FontAwesome.eye
-                onClicked: mainWindow.openPreview()
+                text: qsTr("Discard")
             }
         }
+    }
+
+    Loader {
+        id: footerLoader
+        visible: false
     }
 }
