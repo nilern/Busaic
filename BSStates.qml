@@ -47,16 +47,6 @@ DSM.StateMachine {
             }
 
             DSM.SignalTransition {
-                targetState: toolSettingsState
-                signal: mainWindow.openToolSettings
-            }
-
-            DSM.SignalTransition {
-                targetState: colorsState
-                signal: mainWindow.openColors
-            }
-
-            DSM.SignalTransition {
                 targetState: previewState
                 signal: mainWindow.openPreview
             }
@@ -79,80 +69,6 @@ DSM.StateMachine {
             }
 
             DSM.SignalTransition {
-                targetState: toolSettingsState
-                signal: mainWindow.openToolSettings
-            }
-
-            DSM.SignalTransition {
-                targetState: colorsState
-                signal: mainWindow.openColors
-            }
-
-            DSM.SignalTransition {
-                targetState: previewState
-                signal: mainWindow.openPreview
-            }
-        }
-
-        DSM.State {
-            id: toolSettingsState
-            onEntered: {
-                toolSettings.visible = true;
-                onEntered: mainWindow.footer.item.toggleButton("toolSettings");
-            }
-            onExited: {
-                toolSettings.visible = false;
-                onEntered: mainWindow.footer.item.toggleButton(undefined);
-            }
-
-            DSM.SignalTransition {
-                targetState: toolsState
-                signal: mainWindow.openTools
-            }
-
-            DSM.SignalTransition {
-                targetState: drawState
-                signal: mainWindow.openToolSettings
-            }
-
-            DSM.SignalTransition {
-                targetState: colorsState
-                signal: mainWindow.openColors
-            }
-
-            DSM.SignalTransition {
-                targetState: previewState
-                signal: mainWindow.openPreview
-            }
-        }
-
-        DSM.State {
-            id: colorsState
-            onEntered: {
-                palette.visible = true;
-                onEntered: mainWindow.footer.item.toggleButton("colors");
-            }
-            onExited: {
-                palette.visible = false;
-                onEntered: mainWindow.footer.item.toggleButton(undefined);
-            }
-
-            DSM.SignalTransition {
-                targetState: toolsState
-                signal: mainWindow.openTools
-            }
-
-            DSM.SignalTransition {
-                targetState: toolSettingsState
-                signal: mainWindow.openToolSettings
-            }
-
-            DSM.SignalTransition {
-                targetState: drawState
-                signal: mainWindow.openColors
-            }
-
-            DSM.SignalTransition {
                 targetState: previewState
                 signal: mainWindow.openPreview
             }
@@ -161,33 +77,22 @@ DSM.StateMachine {
 
     DSM.State {
         id: previewState
-        onEntered: mainWindow.showFAB()
-        onExited: mainWindow.hideFAB()
-
-        DSM.SignalTransition {
-            targetState: acceptState
-            signal: acceptFAB.clicked
-        }
-    }
-
-    DSM.State {
-        id: acceptState
-        onEntered: acceptPopup.open()
-        onExited: acceptPopup.close()
-
-        DSM.SignalTransition {
-            targetState: doneState
-            signal: submitButton.clicked
-        }
+        onEntered: mainWindow.setPreviewFooter()
+        onExited: mainWindow.removeFooter()
 
         DSM.SignalTransition {
             targetState: drawState
-            signal: continueButton.clicked
+            signal: mainWindow.continueEdit
+        }
+
+        DSM.SignalTransition {
+            targetState: doneState
+            signal: mainWindow.accept
         }
 
         DSM.SignalTransition {
             targetState: connectState
-            signal: discardButton.clicked
+            signal: mainWindow.discard
         }
     }
 

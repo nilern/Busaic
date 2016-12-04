@@ -1,3 +1,4 @@
+import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.1
 
@@ -31,21 +32,21 @@ ToolBar {
         BSToolButton {
             id: toolsButton
             Layout.fillWidth: true
-            text: FontAwesome.archive
+            text: FontAwesome.pencil
             onClicked: mainWindow.openTools()
         }
 
         BSToolButton {
             id: toolSettingsButton
             Layout.fillWidth: true
-            text: FontAwesome.pencil
+            text: FontAwesome.undo
             onClicked: mainWindow.openToolSettings()
         }
 
         BSToolButton {
             id: colorsButton
             Layout.fillWidth: true
-            text: FontAwesome.eraser
+            text: FontAwesome.repeat
             onClicked: mainWindow.openColors()
         }
 
@@ -55,5 +56,9 @@ ToolBar {
             text: FontAwesome.eye
             onClicked: mainWindow.openPreview()
         }
+    }
+
+    background: Rectangle {
+        color: style.primaryColor
     }
 }

@@ -13,5 +13,6 @@
         <file>BSTiles.qml</file>
         <file>BSDone.qml</file>
         <file>BSSelectionFooter.qml</file>
+        <file>PreviewFooter.qml</file>
     </qresource>
 </RCC>

@@ -12,11 +12,11 @@ Button {
         verticalAlignment: Text.AlignVCenter
         font.family: FontAwesome.fontFamily
         font.pointSize: 42
-        color: "white"
+        color: "#3F51B5"
         text: button.text
     }
 
     background: Rectangle {
-        color: "black"
+        color: "white"
     }
 }

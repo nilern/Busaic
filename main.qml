@@ -11,6 +11,14 @@ ApplicationWindow {
     height: 480
     title: qsTr("Busaic")
 
+    QtObject {
+        id: style
+        property color primaryColor: "#3F51B5"
+        property color primaryColorPale: "#C5CAE9"
+        property color primaryColorDark: "#1A237E"
+        property color accentColor: "#64DD17"
+    }
+
     property Item activeTile
     property int activeTileIndex: -1
     property bool editing: false
@@ -21,6 +29,9 @@ ApplicationWindow {
     signal openToolSettings()
     signal openColors()
     signal openPreview()
+    signal continueEdit()
+    signal accept()
+    signal discard()
 
     onSelectTile: {
         activeTile = tile;
@@ -39,17 +50,15 @@ ApplicationWindow {
         this.footer = footerLoader;
     }
 
+    function setPreviewFooter() {
+        footerLoader.source = "PreviewFooter.qml";
+        footerLoader.visible = true;
+        this.footer = footerLoader;
+    }
+
     function removeFooter() {
         footerLoader.visible = false;
         this.footer = null;
-    }
-
-    function showFAB() {
-        acceptFAB.visible = true;
-    }
-
-    function hideFAB() {
-        acceptFAB.visible = false;
     }
 
     BSStates { }
@@ -63,58 +72,6 @@ ApplicationWindow {
         id: toolbox
         visible: false
         anchors.fill: parent
-    }
-
-    BSToolSettings {
-        id: toolSettings
-        visible: false
-        anchors.fill: parent
-    }
-
-    BSPalette {
-        id: palette
-        visible: false
-        anchors.fill: parent
-    }
-
-    FloatingActionButton {
-        id: acceptFAB
-        visible: false
-        anchors {
-            bottom: parent.bottom
-            right: parent.right
-            margins: 8
-        }
-        font.family: FontAwesome.fontFamily
-        text: FontAwesome.check
-    }
-
-    Popup {
-        id: acceptPopup
-        x: (parent.width - width) / 2
-        y: (parent.height - height) / 2
-        modal: true
-        closePolicy: Popup.NoAutoClose
-
-        ColumnLayout {
-            Button {
-                id: submitButton
-                Layout.fillWidth: true
-                text: qsTr("Submit")
-            }
-
-            Button {
-                id: continueButton
-                Layout.fillWidth: true
-                text: qsTr("Continue Editing")
-            }
-
-            Button {
-                id: discardButton
-                Layout.fillWidth: true
-                text: qsTr("Discard")
-            }
-        }
     }
 
     Loader {

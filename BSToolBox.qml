@@ -5,11 +5,11 @@ import QtQuick.Layouts 1.1
 import FontAwesome 1.0
 
 Rectangle {
-    color: "black"
+    color: "white"
 
     GridLayout {
         anchors.fill: parent
-        columns: 2
+        columns: 4
 
         BSToolBoxButton {
             Layout.fillHeight: true

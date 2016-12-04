@@ -9,10 +9,15 @@ ToolBar {
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
             text: qsTr("Select a tile.")
+            color: "white"
         }
 
         BSToolButton {
             text: qsTr("Random")
         }
+    }
+
+    background: Rectangle {
+        color: style.primaryColor
     }
 }

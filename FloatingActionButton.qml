@@ -7,7 +7,7 @@ Button {
     height: 48
     background: Rectangle {
         anchors.fill: button
-        color: "grey"
+        color: style.accentColor
         radius: width / 2
     }
 }

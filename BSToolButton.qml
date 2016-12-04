@@ -6,11 +6,17 @@ import FontAwesome 1.0
 ToolButton {
     id: button
 
+    background: Rectangle {
+        anchors.fill: button
+        color: style.primaryColor
+    }
+
     contentItem: Text {
         anchors.centerIn: button
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         font.family: FontAwesome.fontFamily
+        color: "white"
         text: button.text
     }
 }
