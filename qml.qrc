@@ -14,5 +14,6 @@
         <file>BSDone.qml</file>
         <file>BSSelectionFooter.qml</file>
         <file>PreviewFooter.qml</file>
+        <file>BSHeader.qml</file>
     </qresource>
 </RCC>

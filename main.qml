@@ -11,7 +11,7 @@ ApplicationWindow {
     height: 480
     title: qsTr("Busaic")
 
-    QtObject {
+    property QtObject style: QtObject {
         id: style
         property color primaryColor: "#3F51B5"
         property color primaryColorPale: "#C5CAE9"
@@ -61,6 +61,17 @@ ApplicationWindow {
         this.footer = null;
     }
 
+    function setBusStopHeader() {
+        headerLoader.source = "BSHeader.qml";
+        headerLoader.visible = true;
+        this.header = headerLoader;
+    }
+
+    function removeHeader() {
+        headerLoader.visible = false;
+        this.footer = null;
+    }
+
     BSStates { }
 
     Loader {
@@ -72,6 +83,11 @@ ApplicationWindow {
         id: toolbox
         visible: false
         anchors.fill: parent
+    }
+
+    Loader {
+        id: headerLoader
+        visible: false
     }
 
     Loader {

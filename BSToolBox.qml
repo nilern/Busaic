@@ -9,30 +9,62 @@ Rectangle {
 
     GridLayout {
         anchors.fill: parent
+        rows: 4
         columns: 4
 
         BSToolBoxButton {
-            Layout.fillHeight: true
             Layout.fillWidth: true
             text: FontAwesome.pencil
         }
 
         BSToolBoxButton {
-            Layout.fillHeight: true
             Layout.fillWidth: true
             text: FontAwesome.paintBrush
         }
 
         BSToolBoxButton {
-            Layout.fillHeight: true
             Layout.fillWidth: true
             text: FontAwesome.square
         }
 
         BSToolBoxButton {
-            Layout.fillHeight: true
             Layout.fillWidth: true
             text: FontAwesome.circle
+        }
+
+        Rectangle {
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            width: 72
+            height: 72
+            radius: width/2
+            color: style.primaryColor
+        }
+
+        Slider {
+            Layout.fillWidth: true
+            Layout.columnSpan: 3
+        }
+
+        Rectangle {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.rowSpan: 2
+            color: style.primaryColor
+        }
+
+        Rectangle {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.rowSpan: 2
+            Layout.columnSpan: 2
+            color: style.primaryColor
+        }
+
+        Rectangle {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.rowSpan: 2
+            color: style.primaryColor
         }
     }
 }

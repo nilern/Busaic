@@ -31,10 +31,12 @@ DSM.StateMachine {
         initialState: drawState
         onEntered: {
             mainWindow.editing = true;
+            mainWindow.setBusStopHeader();
             mainWindow.setInteractionFooter();
         }
         onExited: {
             mainWindow.editing = false;
+            mainWindow.removeHeader();
             mainWindow.removeFooter();
         }
 
@@ -77,8 +79,14 @@ DSM.StateMachine {
 
     DSM.State {
         id: previewState
-        onEntered: mainWindow.setPreviewFooter()
-        onExited: mainWindow.removeFooter()
+        onEntered: {
+            mainWindow.setBusStopHeader();
+            mainWindow.setPreviewFooter();
+        }
+        onExited: {
+            mainWindow.removeHeader();
+            mainWindow.removeFooter();
+        }
 
         DSM.SignalTransition {
             targetState: drawState
