@@ -62,7 +62,8 @@ Item {
                     onPositionChanged: if (mainWindow.editing && parent === mainWindow.activeTile) {
                         var ctx = canvas.getContext("2d");
                         ctx.lineWidth = mainWindow.pencilSize;
-                        ctx.strokeStyle = mainWindow.drawColor;
+                        ctx.strokeStyle = Qt.hsva(mainWindow.hue,  mainWindow.saturation,
+                                                  mainWindow.colorValue, mainWindow.colorAlpha);
 
                         var mid = Qt.point((parent.oldPos.x + mouse.x) / 2,
                                            (parent.oldPos.y + mouse.y) / 2);

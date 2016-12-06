@@ -24,7 +24,10 @@ ApplicationWindow {
     property bool editing: false
 
     property real pencilSize: 1.0
-    property color drawColor: "black"
+    property real hue: 0
+    property real saturation: 1.0
+    property real colorValue: 0
+    property real colorAlpha: 1.0
 
     signal connect()
     signal selectTile(Item tile)
