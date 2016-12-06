@@ -17,6 +17,7 @@ ActionBar {
             id: continueButton
             Layout.fillWidth: true
             font.family: FontAwesome.fontFamily
+            font.pointSize: Constants.titleFontSize
             text: FontAwesome.arrowLeft
             onClicked: mainWindow.continueEdit()
         }
@@ -25,14 +26,24 @@ ActionBar {
             id: discardButton
             Layout.fillWidth: true
             font.family: FontAwesome.fontFamily
+            font.pointSize: Constants.titleFontSize
             text: FontAwesome.trash
             onClicked: mainWindow.discard()
+        }
+
+        ActionButton {
+            Layout.fillWidth: true
+            font.family: FontAwesome.fontFamily
+            font.pointSize: Constants.titleFontSize
+            text: FontAwesome.save
+            onClicked: mainWindow.openColors()
         }
 
         ActionButton {
             id: submitButton
             Layout.fillWidth: true
             font.family: FontAwesome.fontFamily
+            font.pointSize: Constants.titleFontSize
             text: FontAwesome.check
             onClicked: mainWindow.accept()
         }

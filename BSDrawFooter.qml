@@ -9,25 +9,6 @@ ActionBar {
     id: interactionFooter
     backgroundColor: style.primaryColor
 
-    function toggleButton(label) {
-        var button;
-        switch (label) {
-        case "tools":
-            button = toolsButton;
-            break;
-        case "toolSettings":
-            button = toolSettingsButton
-            break;
-        case "colors":
-            button = colorsButton;
-            break;
-        }
-        for (var i = 0; i < layout.children.length; i++) {
-            var child = layout.children[i];
-            child.checked = child === button;
-        }
-    }
-
     RowLayout {
         id: layout
         anchors.fill: parent
@@ -35,22 +16,23 @@ ActionBar {
             id: toolsButton
             Layout.fillWidth: true
             font.family: FontAwesome.fontFamily
+            font.pointSize: Constants.titleFontSize
             text: FontAwesome.pencil
             onClicked: mainWindow.openTools()
         }
 
         ActionButton {
-            id: toolSettingsButton
             Layout.fillWidth: true
             font.family: FontAwesome.fontFamily
+            font.pointSize: Constants.titleFontSize
             text: FontAwesome.undo
             onClicked: mainWindow.openToolSettings()
         }
 
         ActionButton {
-            id: colorsButton
             Layout.fillWidth: true
             font.family: FontAwesome.fontFamily
+            font.pointSize: Constants.titleFontSize
             text: FontAwesome.repeat
             onClicked: mainWindow.openColors()
         }
@@ -59,6 +41,7 @@ ActionBar {
             id: previewButton
             Layout.fillWidth: true
             font.family: FontAwesome.fontFamily
+            font.pointSize: Constants.titleFontSize
             text: FontAwesome.eye
             onClicked: mainWindow.openPreview()
         }

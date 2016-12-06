@@ -43,17 +43,15 @@ Item {
                 Canvas {
                     id: canvas
                     anchors.fill: parent
-                    Component.onCompleted: {
-                        var ctx = canvas.getContext("2d");
-                        ctx.lineJoin = "round";
-                        ctx.lineCap = "round";
-                    }
                 }
 
                 MouseArea {
                     anchors.fill: parent
                     onClicked: if (!mainWindow.editing) {
-                        mainWindow.selectTile(parent)
+                        var ctx = canvas.getContext("2d");
+                        ctx.lineJoin = "round";
+                        ctx.lineCap = "round";
+                        mainWindow.selectTile(parent);
                     }
                     onPressed: if (mainWindow.editing) {
                         parent.oldMid = parent.oldPos = Qt.point(mouse.x, mouse.y);

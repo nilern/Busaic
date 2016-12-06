@@ -14,7 +14,7 @@ ActionBar {
             width: height
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            font.pointSize: Constants.titleFontSize
+            font.pointSize: 24
             color: mainWindow.style.accentColor
             text: "23"
 
