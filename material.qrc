@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Material/Constants.qml</file>
+        <file>Material/qmldir</file>
+        <file>Material/RaisedButton.qml</file>
+        <file>Material/PaperShadow.qml</file>
+        <file>Material/ActionBar.qml</file>
+        <file>Material/PaperRipple.qml</file>
+        <file>Material/Label.qml</file>
+        <file>Material/ActionButton.qml</file>
+    </qresource>
+</RCC>

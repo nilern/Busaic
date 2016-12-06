@@ -7,14 +7,14 @@ import FontAwesome 1.0
 ApplicationWindow {
     id: mainWindow
     visible: true
-    width: 640
-    height: 480
+    width: 500
+    height: 800
     title: qsTr("Busaic")
 
     property QtObject style: QtObject {
         id: style
         property color primaryColor: "#3F51B5"
-        property color primaryColorPale: "#C5CAE9"
+        property color primaryColorPale: "#7986CB"
         property color primaryColorDark: "#1A237E"
         property color accentColor: "#64DD17"
     }
@@ -69,7 +69,7 @@ ApplicationWindow {
 
     function removeHeader() {
         headerLoader.visible = false;
-        this.footer = null;
+        this.header = null;
     }
 
     BSStates { }

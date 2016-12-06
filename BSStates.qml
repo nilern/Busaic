@@ -17,8 +17,10 @@ DSM.StateMachine {
         id: tileSelState
         onEntered: {
             mainContent.source = "BSTiles.qml"
+            mainWindow.setBusStopHeader();
             mainWindow.setSelectionFooter();
         }
+        onExited: mainWindow.removeHeader();
 
         DSM.SignalTransition {
             targetState: interactionState

@@ -3,9 +3,11 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.1
 
 import FontAwesome 1.0
+import Material 0.1
 
-ToolBar {
+ActionBar {
     id: interactionFooter
+    backgroundColor: style.primaryColor
 
     function toggleButton(label) {
         var button;
@@ -29,36 +31,36 @@ ToolBar {
     RowLayout {
         id: layout
         anchors.fill: parent
-        BSToolButton {
+        ActionButton {
             id: toolsButton
             Layout.fillWidth: true
+            font.family: FontAwesome.fontFamily
             text: FontAwesome.pencil
             onClicked: mainWindow.openTools()
         }
 
-        BSToolButton {
+        ActionButton {
             id: toolSettingsButton
             Layout.fillWidth: true
+            font.family: FontAwesome.fontFamily
             text: FontAwesome.undo
             onClicked: mainWindow.openToolSettings()
         }
 
-        BSToolButton {
+        ActionButton {
             id: colorsButton
             Layout.fillWidth: true
+            font.family: FontAwesome.fontFamily
             text: FontAwesome.repeat
             onClicked: mainWindow.openColors()
         }
 
-        BSToolButton {
+        ActionButton {
             id: previewButton
             Layout.fillWidth: true
+            font.family: FontAwesome.fontFamily
             text: FontAwesome.eye
             onClicked: mainWindow.openPreview()
         }
-    }
-
-    background: Rectangle {
-        color: style.primaryColor
     }
 }

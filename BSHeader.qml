@@ -1,8 +1,8 @@
 import QtQuick 2.7
-import QtQuick.Controls 2.0
 
-ToolBar {
-    height: 48
+import Material 0.1
+ActionBar {
+    backgroundColor: style.primaryColor
 
     Row {
         anchors.fill: parent
@@ -14,6 +14,7 @@ ToolBar {
             width: height
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
+            font.pointSize: Constants.titleFontSize
             color: mainWindow.style.accentColor
             text: "23"
 
@@ -26,12 +27,9 @@ ToolBar {
         Label {
             height: parent.height
             verticalAlignment: Text.AlignVCenter
+            font.pointSize: Constants.titleFontSize
             color: "white"
             text: "Valtaraitti"
         }
-    }
-
-    background: Rectangle {
-        color: style.primaryColor
     }
 }

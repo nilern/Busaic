@@ -3,37 +3,38 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.1
 
 import FontAwesome 1.0
+import Material 0.1
 
-ToolBar {
+ActionBar {
     id: previewFooter
+    backgroundColor: style.primaryColor
 
     RowLayout {
         id: layout
         anchors.fill: parent
 
-        BSToolButton {
+        ActionButton {
             id: continueButton
             Layout.fillWidth: true
+            font.family: FontAwesome.fontFamily
             text: FontAwesome.arrowLeft
             onClicked: mainWindow.continueEdit()
         }
 
-        BSToolButton {
+        ActionButton {
             id: discardButton
             Layout.fillWidth: true
+            font.family: FontAwesome.fontFamily
             text: FontAwesome.trash
             onClicked: mainWindow.discard()
         }
 
-        BSToolButton {
+        ActionButton {
             id: submitButton
             Layout.fillWidth: true
+            font.family: FontAwesome.fontFamily
             text: FontAwesome.check
             onClicked: mainWindow.accept()
         }
-    }
-
-    background: Rectangle {
-        color: style.primaryColor
     }
 }

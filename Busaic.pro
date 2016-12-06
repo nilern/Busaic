@@ -1,11 +1,16 @@
 QT += qml quick
 
+android {
+    QT += androidextras
+}
+
 CONFIG += c++11
 
 SOURCES += main.cc
 
 RESOURCES += qml.qrc \
-    vendor/font/awesome/pri/fontawesome.qrc
+    vendor/font/awesome/pri/fontawesome.qrc \
+    material.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
