@@ -43,6 +43,11 @@ Item {
                 Canvas {
                     id: canvas
                     anchors.fill: parent
+                    Component.onCompleted: {
+                        var ctx = canvas.getContext("2d");
+                        ctx.lineJoin = "round";
+                        ctx.lineCap = "round";
+                    }
                 }
 
                 MouseArea {
@@ -56,14 +61,18 @@ Item {
 
                     onPositionChanged: if (mainWindow.editing && parent === mainWindow.activeTile) {
                         var ctx = canvas.getContext("2d");
-                        ctx.strokeStyle = style.primaryColor;
+                        ctx.lineWidth = mainWindow.pencilSize;
+                        ctx.strokeStyle = mainWindow.drawColor;
+
                         var mid = Qt.point((parent.oldPos.x + mouse.x) / 2,
                                            (parent.oldPos.y + mouse.y) / 2);
+                        ctx.beginPath();
                         ctx.moveTo(mid.x, mid.y);
                         ctx.quadraticCurveTo(parent.oldPos.x, parent.oldPos.y,
                                              parent.oldMid.x, parent.oldMid.y);
                         parent.oldMid = mid;
                         parent.oldPos = Qt.point(mouse.x, mouse.y);
+
                         ctx.stroke();
                         canvas.requestPaint();
                     }

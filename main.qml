@@ -23,6 +23,9 @@ ApplicationWindow {
     property int activeTileIndex: -1
     property bool editing: false
 
+    property real pencilSize: 1.0
+    property color drawColor: "black"
+
     signal connect()
     signal selectTile(Item tile)
     signal openTools()

@@ -32,17 +32,25 @@ Rectangle {
             text: FontAwesome.circle
         }
 
-        Rectangle {
+        Item {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            width: 72
-            height: 72
-            radius: width/2
-            color: style.primaryColor
+            Layout.fillWidth: true
+            height: width
+
+            Rectangle {
+                anchors.centerIn: parent
+                width: mainWindow.pencilSize
+                height: width
+                radius: width/2
+                color: style.primaryColor
+            }
         }
 
         Slider {
             Layout.fillWidth: true
             Layout.columnSpan: 3
+            to: 56 * dp
+            onVisualPositionChanged: mainWindow.pencilSize = to * visualPosition
         }
 
         Rectangle {
