@@ -37,6 +37,9 @@ Item {
                 border.width: 1
                 border.color: "black"
 
+                property point oldPos
+                property point oldMid
+
                 Canvas {
                     id: canvas
                     anchors.fill: parent
@@ -47,10 +50,21 @@ Item {
                     onClicked: if (!mainWindow.editing) {
                         mainWindow.selectTile(parent)
                     }
+                    onPressed: if (mainWindow.editing) {
+                        parent.oldMid = parent.oldPos = Qt.point(mouse.x, mouse.y);
+                    }
+
                     onPositionChanged: if (mainWindow.editing && parent === mainWindow.activeTile) {
                         var ctx = canvas.getContext("2d");
-                        ctx.fillStyle = Qt.rgba(0, 0, 127, 1);
-                        ctx.fillRect(mouse.x - 2, mouse.y - 2, 4, 4);
+                        ctx.strokeStyle = style.primaryColor;
+                        var mid = Qt.point((parent.oldPos.x + mouse.x) / 2,
+                                           (parent.oldPos.y + mouse.y) / 2);
+                        ctx.moveTo(mid.x, mid.y);
+                        ctx.quadraticCurveTo(parent.oldPos.x, parent.oldPos.y,
+                                             parent.oldMid.x, parent.oldMid.y);
+                        parent.oldMid = mid;
+                        parent.oldPos = Qt.point(mouse.x, mouse.y);
+                        ctx.stroke();
                         canvas.requestPaint();
                     }
                 }
