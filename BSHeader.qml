@@ -16,7 +16,7 @@ ActionBar {
             verticalAlignment: Text.AlignVCenter
             font.pointSize: 24
             color: mainWindow.style.accentColor
-            text: "23"
+            text: "4"
 
             background: Rectangle {
                 anchors.fill: busNumber

@@ -13,7 +13,7 @@ Rectangle {
            horizontalAlignment: Text.AlignHCenter
            font.pointSize: 72
            color: "white"
-           text: qsTr("Busaic\nBus 23")
+           text: qsTr("Busaic\nBus 4")
        }
 
        Label {

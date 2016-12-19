@@ -44,7 +44,7 @@ ActionBar {
             Layout.fillWidth: true
             font.family: FontAwesome.fontFamily
             font.pointSize: Constants.titleFontSize
-            text: FontAwesome.check
+            text: FontAwesome.upload
             onClicked: mainWindow.accept()
         }
     }

@@ -8,6 +8,10 @@ import Material 0.1
 Rectangle {
     color: "white"
 
+    MouseArea {
+        anchors.fill: parent
+    }
+
     GridLayout {
         anchors.fill: parent
         anchors.margins: 8 * dp

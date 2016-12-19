@@ -42,7 +42,7 @@ ActionBar {
             Layout.fillWidth: true
             font.family: FontAwesome.fontFamily
             font.pointSize: Constants.titleFontSize
-            text: FontAwesome.eye
+            text: FontAwesome.check
             onClicked: mainWindow.openPreview()
         }
     }
